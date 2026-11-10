@@ -1,0 +1,1152 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on labs that take an internal app from an idea to a governed app published on the Copilot Managed Runtime.">
+      
+      
+      
+        <link rel="canonical" href="https://qmatteoq.github.io/copilot-managed-runtime-labs/00-prerequisites/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../01-no-code/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Prerequisites - Copilot Managed Runtime Labs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/labStyles.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#before-you-start" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Copilot Managed Runtime Labs" class="md-header__button md-logo" aria-label="Copilot Managed Runtime Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Managed Runtime Labs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Prerequisites
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/qmatteoq/copilot-managed-runtime-labs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    qmatteoq/copilot-managed-runtime-labs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Get started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../01-no-code/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Copilot Managed Runtime Labs" class="md-nav__button md-logo" aria-label="Copilot Managed Runtime Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Copilot Managed Runtime Labs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/qmatteoq/copilot-managed-runtime-labs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    qmatteoq/copilot-managed-runtime-labs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-need" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you need
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-everyone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Everyone
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-exercise-2-only-pro-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Exercise 2 only (pro-code)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-no-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 - No-code with Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-pro-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 - Pro-code with a coding agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="before-you-start">Before you start</h1>
+<p><a href="../">Overview</a> | <a href="../01-no-code/">Exercise 1: No-code</a> | <a href="../02-pro-code/">Exercise 2: Pro-code</a></p>
+<p>Complete this page before the lab starts. Part 1 is for everyone. Part 2 is only needed for Exercise 2 (pro-code).</p>
+<p><strong>Time:</strong> about 30 minutes, plus waiting time for Microsoft 365 to index your training content (see <a href="#step-6-check-that-copilot-can-find-your-training-content">Step 6</a>). Do Part 1 at least a few hours before the lab, ideally the day before.</p>
+<h2 id="what-you-need">What you need</h2>
+<table>
+<thead>
+<tr>
+<th>You need</th>
+<th>Why</th>
+<th>Who provides it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A <strong>training account</strong> in a non-production Microsoft 365 tenant, with an Exchange Online mailbox, OneDrive and Teams</td>
+<td>The app reads your own calendar, mail, chats and files</td>
+<td>Your facilitator</td>
+</tr>
+<tr>
+<td>Access to the <strong>Code</strong> tab in the Copilot app</td>
+<td>You build the no-code app there</td>
+<td>Your facilitator enables it for the tenant</td>
+</tr>
+<tr>
+<td>Permission to <strong>run</strong> Copilot managed apps: a Power Apps Premium license, or a Copilot Credits spending policy that includes you</td>
+<td>Every app launch and connector call is metered</td>
+<td>Your facilitator</td>
+</tr>
+<tr>
+<td>The <strong>Office 365 Outlook</strong> and <strong>Work IQ</strong> connectors allowed in your environment</td>
+<td>The app uses them to read your calendar and find related content</td>
+<td>Your facilitator</td>
+</tr>
+<tr>
+<td>For Exercise 2 only: a Windows PC where you can install software, and a <strong>GitHub Copilot</strong> subscription</td>
+<td>A coding agent (VS Code, the GitHub Copilot app or GitHub Copilot CLI) does the work on your machine</td>
+<td>You or your organization</td>
+</tr>
+<tr>
+<td>For Exercise 2 only: permission to create an <strong>app registration</strong> in Microsoft Entra ID</td>
+<td>The starting version of the app signs in with its own registration</td>
+<td>Your facilitator</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!IMPORTANT]
+Always use your <strong>training</strong> account and tenant. Do not use your production account, real customer data, or someone else's app IDs.</p>
+</blockquote>
+<hr />
+<h2 id="part-1-everyone">Part 1: Everyone</h2>
+<h3 id="step-1-open-a-clean-browser-window">Step 1: Open a clean browser window</h3>
+<p>You will sign in with a training account. A separate browser window avoids mixing it up with your normal work account.</p>
+<ol>
+<li>Open <strong>Microsoft Edge</strong>.</li>
+<li>Press <strong>Ctrl+Shift+N</strong> to open an <strong>InPrivate</strong> window. (If you prefer, create a separate Edge profile for the training account instead.)</li>
+<li>Use this window for every browser step in the lab.</li>
+</ol>
+<h3 id="step-2-sign-in-to-copilot-and-check-the-code-tab">Step 2: Sign in to Copilot and check the Code tab</h3>
+<ol>
+<li>In the InPrivate window, go to <strong>https://copilot.cloud.microsoft</strong>.</li>
+<li>Sign in with the training account your facilitator gave you. If you are asked to set up a password or multifactor authentication, follow the prompts.</li>
+<li>At the top of the left pane, check that you see two tabs: <strong>Home</strong> and <strong>Code</strong>.</li>
+<li>Select <strong>Code</strong>. You should see the heading <strong>Let's build something together.</strong> and a box that says <strong>Create anything</strong>.</li>
+</ol>
+<p><img alt="The Code tab of the Copilot app, before anything is created." src="../images/code-01-landing.png" /></p>
+<p>If you do not see the <strong>Code</strong> tab, tell your facilitator now. Code is enabled per tenant, so you cannot fix this yourself.</p>
+<h3 id="step-3-create-calendar-events-in-outlook">Step 3: Create calendar events in Outlook</h3>
+<p>The app shows one day of your calendar. You will create three events on <strong>the day you will do the lab</strong>, so the app has something to show. The two meetings overlap on purpose, so you can see how the app places them side by side.</p>
+<p>You can let Cowork create the events for you (Option A, faster) or create them by hand (Option B).</p>
+<h4 id="option-a-ask-cowork-to-create-the-events">Option A: Ask Cowork to create the events</h4>
+<ol>
+<li>In the same InPrivate window, go to <strong>https://copilot.cloud.microsoft</strong> and open <strong>Cowork</strong> from the left pane.</li>
+<li>Copy the prompt below into the message box. Replace <code>&lt;LAB DAY&gt;</code> with the date of your lab day, for example <code>12 November 2026</code>, then send it.</li>
+</ol>
+<div class="highlight"><pre><span></span><code>Create these three events in my Outlook calendar on &lt;LAB DAY&gt;, in my time zone.
+Do not invite anyone else.
+
+1. Title: "Orion launch – go/no-go review"
+   Time: 10:00 to 11:00
+   Make it a Teams meeting.
+   Description (keep the line breaks):
+   Agenda
+   1. Confirm the Orion launch date (currently 14 March)
+   2. Review the open risk on localisation for the German market
+   3. Decide the launch budget split between digital and events
+   4. Agree owners for the launch checklist
+
+2. Title: "Orion pricing sync"
+   Time: 10:30 to 11:15
+   Description: Quick sync on the Orion launch pricing tiers before the go/no-go review.
+
+3. Title: "Orion launch week"
+   All-day event.
+
+Show me the three events before you create them.
+</code></pre></div>
+<ol>
+<li>Cowork lists the three events. Check the titles, date and times. If something is wrong, tell Cowork what to change in plain words, for example <code>Move the pricing sync to 10:30</code>.</li>
+<li>When the list is correct, approve it. If Cowork shows a confirmation button, select it.</li>
+<li>Go to <strong>https://outlook.cloud.microsoft/calendar</strong> and open your lab day. Check that you see one all-day event and two overlapping meetings. If an event is missing or wrong, fix it by hand with Option B.</li>
+</ol>
+<h4 id="option-b-create-the-events-by-hand">Option B: Create the events by hand</h4>
+<ol>
+<li>In the same InPrivate window, go to <strong>https://outlook.cloud.microsoft/calendar</strong>.</li>
+<li>Select <strong>New event</strong> (top left).</li>
+<li>
+<p>Create the <strong>first meeting</strong> with these values:</p>
+</li>
+<li>
+<p><strong>Title:</strong> <code>Orion launch – go/no-go review</code></p>
+</li>
+<li><strong>Attendees:</strong> One or two colleagues from your training tenant. If you have none, leave it empty.</li>
+<li><strong>Date and time:</strong> Your lab day, <strong>10:00 to 11:00</strong></li>
+<li>
+<p><strong>Location:</strong> <code>Teams meeting</code> (turn on the <strong>Teams meeting</strong> toggle)</p>
+</li>
+<li>
+<p>Click in the large description box and paste this agenda:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>Agenda
+1. Confirm the Orion launch date (currently 14 March)
+2. Review the open risk on localisation for the German market
+3. Decide the launch budget split between digital and events
+4. Agree owners for the launch checklist
+</code></pre></div>
+<ol>
+<li>Select <strong>Save</strong> (or <strong>Send</strong>, if you added attendees).</li>
+<li>
+<p>Select <strong>New event</strong> again and create the <strong>second meeting</strong>:</p>
+</li>
+<li>
+<p><strong>Title:</strong> <code>Orion pricing sync</code></p>
+</li>
+<li><strong>Date and time:</strong> Your lab day, <strong>10:30 to 11:15</strong> (it overlaps the first meeting)</li>
+<li>
+<p><strong>Description:</strong> <code>Quick sync on the Orion launch pricing tiers before the go/no-go review.</code></p>
+</li>
+<li>
+<p>Select <strong>Save</strong>.</p>
+</li>
+<li>
+<p>Select <strong>New event</strong> again and create an <strong>all-day event</strong>:</p>
+</li>
+<li>
+<p><strong>Title:</strong> <code>Orion launch week</code></p>
+</li>
+<li><strong>Date:</strong> Your lab day</li>
+<li>
+<p><strong>All day:</strong> Turn on the <strong>All day</strong> toggle</p>
+</li>
+<li>
+<p>Select <strong>Save</strong>. Your calendar for the lab day now shows one all-day event and two overlapping meetings.</p>
+</li>
+</ol>
+<h3 id="step-4-send-yourself-two-emails-in-outlook">Step 4: Send yourself two emails in Outlook</h3>
+<p>The briefing looks for emails related to the meeting. You will send two emails to yourself: one with a decision and one with an open question.</p>
+<h4 id="option-a-ask-cowork-to-send-the-emails">Option A: Ask Cowork to send the emails</h4>
+<ol>
+<li>In <strong>Cowork</strong>, send this prompt:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>Send two emails to me only (my own address, nobody else).
+
+Email 1
+Subject: Orion launch – decision on launch date
+Body:
+Hi team,
+
+Following yesterday's call, we agreed to move the Orion launch date to 14 March.
+Marketing will update the campaign calendar by Friday.
+Owner for the launch checklist: Product Marketing.
+
+Thanks
+
+Email 2
+Subject: Orion launch – open question on German localisation
+Body:
+Hi,
+
+We still have an open question for the Orion launch: the German localisation
+of the product pages is not finished. Can we launch in Germany on 14 March,
+or should we delay that market by two weeks?
+
+Please bring a recommendation to the go/no-go review.
+
+Show me both drafts before you send them.
+</code></pre></div>
+<ol>
+<li>Check that each draft is addressed <strong>only to you</strong>, then approve sending.</li>
+<li>Go to <strong>https://outlook.cloud.microsoft/mail</strong> and check that both emails are in your <strong>Inbox</strong>. If one is missing, send it by hand with Option B.</li>
+</ol>
+<h4 id="option-b-send-the-emails-by-hand">Option B: Send the emails by hand</h4>
+<ol>
+<li>Go to <strong>https://outlook.cloud.microsoft/mail</strong>.</li>
+<li>Select <strong>New mail</strong>.</li>
+<li>In <strong>To</strong>, type your own training email address.</li>
+<li>Use this subject and body, then select <strong>Send</strong>:</li>
+</ol>
+<p><strong>Subject:</strong></p>
+<div class="highlight"><pre><span></span><code>Orion launch – decision on launch date
+</code></pre></div>
+<p><strong>Body:</strong></p>
+<div class="highlight"><pre><span></span><code>Hi team,
+
+Following yesterday's call, we agreed to move the Orion launch date to 14 March.
+Marketing will update the campaign calendar by Friday.
+Owner for the launch checklist: Product Marketing.
+
+Thanks
+</code></pre></div>
+<ol>
+<li>Select <strong>New mail</strong> again, address it to yourself, and send this second email:</li>
+</ol>
+<p><strong>Subject:</strong></p>
+<div class="highlight"><pre><span></span><code>Orion launch – open question on German localisation
+</code></pre></div>
+<p><strong>Body:</strong></p>
+<div class="highlight"><pre><span></span><code>Hi,
+
+We still have an open question for the Orion launch: the German localisation
+of the product pages is not finished. Can we launch in Germany on 14 March,
+or should we delay that market by two weeks?
+
+Please bring a recommendation to the go/no-go review.
+</code></pre></div>
+<ol>
+<li>Open your <strong>Inbox</strong> and check that both emails arrived.</li>
+</ol>
+<h3 id="step-5-create-a-document-and-a-teams-message">Step 5: Create a document and a Teams message</h3>
+<p><strong>Create a Word document in OneDrive:</strong></p>
+<ol>
+<li>Go to <strong>https://www.office.com</strong> and select <strong>Word</strong> in the left app bar (or go to <strong>https://word.cloud.microsoft</strong>).</li>
+<li>Select <strong>Blank document</strong>.</li>
+<li>Select the file name at the top (it says <em>Document</em> or <em>Document1</em>) and rename it to <code>Orion launch plan</code>. Press <strong>Enter</strong>. The file is saved to your OneDrive.</li>
+<li>Paste this text into the document:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>Orion launch plan
+
+Launch date: 14 March
+Markets: United Kingdom, France, Germany (German localisation still open)
+Budget: 60% digital campaigns, 40% events, to be confirmed at the go/no-go review
+Risks:
+- German product pages are not localised yet
+- Event venue in Paris is not yet confirmed
+Next steps:
+- Product Marketing owns the launch checklist
+- Finance to confirm the budget split
+</code></pre></div>
+<ol>
+<li>Wait until the top bar shows <strong>Saved</strong>, then close the tab.</li>
+</ol>
+<p><strong>Post a message in Microsoft Teams:</strong></p>
+<ol>
+<li>Go to <strong>https://teams.cloud.microsoft</strong> and sign in with the training account.</li>
+<li>Select <strong>Chat</strong> in the left bar.</li>
+<li>Open a chat with a colleague from the training tenant. If you have none, open the chat with <strong>yourself</strong> (your own name appears at the top of the chat list).</li>
+<li>Send this message:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>Quick update on Orion launch: Finance has not confirmed the 60/40 budget split yet. Let's close it at the go/no-go review.
+</code></pre></div>
+<h3 id="step-6-check-that-copilot-can-find-your-training-content">Step 6: Check that Copilot can find your training content</h3>
+<p>New emails, documents and chats can take <strong>from a few minutes to several hours</strong> before Copilot can search them. The briefing in the app uses the same search, so check it here first.</p>
+<ol>
+<li>Go back to <strong>https://copilot.cloud.microsoft</strong> and select the <strong>Home</strong> tab.</li>
+<li>Paste this prompt into the chat box and press <strong>Enter</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>What do you know about the Orion launch? Look in my emails, Teams chats, meetings and files. List each source you used.
+</code></pre></div>
+<ol>
+<li>Check the answer:</li>
+<li><strong>Good:</strong> the answer mentions the 14 March date, the German localisation question, or the 60/40 budget, and lists your emails, document or chat as sources.</li>
+<li><strong>Not yet:</strong> Copilot says it cannot find anything. Wait an hour and try again. Nothing is broken; the content is not indexed yet.</li>
+</ol>
+<blockquote>
+<p>[!NOTE]
+If you do the lab on a different day from the one you chose in Step 3, open each calendar event in Outlook and change its date to the new lab day.</p>
+</blockquote>
+<p><strong>Checkpoint:</strong> You can open the Code tab, your lab day has three Orion events, and Copilot can find at least one of your Orion emails, documents or chats.</p>
+<hr />
+<h2 id="part-2-exercise-2-only-pro-code">Part 2: Exercise 2 only (pro-code)</h2>
+<p>Skip this part if you only do Exercise 1.</p>
+<h3 id="step-7-get-the-lab-files">Step 7: Get the lab files</h3>
+<ol>
+<li>Get a copy of this lab on your PC. If your facilitator shared a Git repository, clone it. If they shared a ZIP file, right-click it, select <strong>Extract All</strong>, and extract it to <code>C:\labs</code>.</li>
+<li>Check that you have a folder like <code>C:\labs\copilot-managed-runtime-labs</code> that contains a <code>scripts</code> folder and a <code>samples</code> folder.</li>
+</ol>
+<h3 id="step-8-install-the-tools-with-the-setup-script">Step 8: Install the tools with the setup script</h3>
+<p>The lab includes a script that installs everything Exercise 2 needs:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node.js LTS 24.11 or later (includes npm)</td>
+<td>Building and running the web app</td>
+</tr>
+<tr>
+<td>Git 2.27 or later, with Git Credential Manager</td>
+<td>Saving and publishing your code</td>
+</tr>
+<tr>
+<td>Visual Studio Code</td>
+<td>Editing the code, and a coding agent with GitHub Copilot Chat</td>
+</tr>
+<tr>
+<td>GitHub Copilot CLI</td>
+<td>A coding agent in the terminal. It also installs the plugin used by the GitHub Copilot app</td>
+</tr>
+<tr>
+<td>Copilot Managed Runtime CLI (<code>ms</code>)</td>
+<td>Creating, previewing and deploying the managed app</td>
+</tr>
+</tbody>
+</table>
+<p>The script uses the package sources already configured on your PC (for example, your company's internal npm registry). It never changes them.</p>
+<ol>
+<li>Select <strong>Start</strong>, type <code>PowerShell</code>, and open <strong>Windows PowerShell</strong> (no need to run it as administrator).</li>
+<li>Go to the lab folder. Change the path if you extracted it somewhere else:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">cd </span><span class="n">C</span><span class="p">:\</span><span class="n">labs</span><span class="p">\</span><span class="n">copilot-managed-runtime-labs</span>
+</code></pre></div>
+<ol>
+<li>Allow the script to run in this window only:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">Set-ExecutionPolicy</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span>
+</code></pre></div>
+<p>If your company blocks this command, ask your IT team to install the tools in the table above instead.</p>
+<ol>
+<li>Run the setup script:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">scripts</span><span class="p">\</span><span class="nb">Install-Prerequisites</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
+<ol>
+<li>While it runs, Windows may ask you to accept a license agreement or allow an installer to make changes. Accept these prompts. The script prints <code>[OK]</code> for each tool that is ready.</li>
+<li>When it finishes, <strong>close the PowerShell window</strong> and open a new one. New tools are only visible in new windows.</li>
+<li>In the new window, check that everything is installed:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">cd </span><span class="n">C</span><span class="p">:\</span><span class="n">labs</span><span class="p">\</span><span class="n">copilot-managed-runtime-labs</span>
+<span class="nb">Set-ExecutionPolicy</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span>
+<span class="p">.\</span><span class="n">scripts</span><span class="p">\</span><span class="nb">Install-Prerequisites</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-CheckOnly</span>
+</code></pre></div>
+<ol>
+<li>The last lines should say <strong>All tools are ready.</strong> If a tool shows <code>[FAILED]</code>, run step 4 again. If it still fails, copy the error message and share it with your facilitator.</li>
+</ol>
+<h3 id="step-9-choose-your-coding-agent-and-add-the-managed-apps-plugin">Step 9: Choose your coding agent and add the managed apps plugin</h3>
+<p>In Exercise 2 a <strong>coding agent</strong> does the work for you: you describe what you want, and the agent edits the code and runs the commands. Pick the one you're most comfortable with. The prompts in the lab work the same in all of them.</p>
+<table>
+<thead>
+<tr>
+<th>Coding agent</th>
+<th>Good for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Visual Studio Code</strong> with GitHub Copilot Chat in <strong>Agent</strong> mode</td>
+<td>People who like to see the code and the chat side by side</td>
+</tr>
+<tr>
+<td><strong>GitHub Copilot app</strong></td>
+<td>People who prefer a desktop chat app</td>
+</tr>
+<tr>
+<td><strong>GitHub Copilot CLI</strong></td>
+<td>People who are comfortable in a terminal</td>
+</tr>
+</tbody>
+</table>
+<p>Whichever you choose, you add the <strong>Copilot Managed Runtime plugin</strong>. It teaches the agent how to build, preview and deploy Copilot managed apps, with skills such as <strong>dev</strong>, <strong>play</strong>, <strong>deploy</strong> and <strong>share</strong>.</p>
+<h4 id="option-a-visual-studio-code">Option A: Visual Studio Code</h4>
+<ol>
+<li>Open <strong>Visual Studio Code</strong> and sign in to GitHub Copilot: select the <strong>Accounts</strong> icon (bottom left) and <strong>Sign in with GitHub to use GitHub Copilot</strong>.</li>
+<li>Open the Chat view with <strong>Ctrl+Alt+I</strong>. In the mode picker at the bottom of the chat box, select <strong>Agent</strong>.</li>
+<li>Press <strong>Ctrl+Shift+P</strong> to open the Command Palette, type <code>Chat: Install Plugin from Source</code> and press <strong>Enter</strong>.</li>
+<li>Enter <code>https://github.com/microsoft/Managed-Apps</code> and press <strong>Enter</strong>. Confirm when VS Code asks whether you trust the plugin.</li>
+</ol>
+<p>If you don't find the command, your organization may have turned off agent plugins. Ask your facilitator, or use Option C.</p>
+<ol>
+<li>To check, select the <strong>gear</strong> icon at the top of the Chat view, then <strong>Agent Customizations</strong> (or <strong>Plugins</strong>). <strong>microsoft-managed-apps</strong> is listed.</li>
+</ol>
+<h4 id="option-b-github-copilot-app">Option B: GitHub Copilot app</h4>
+<p>The GitHub Copilot app uses the same plugins as GitHub Copilot CLI. Install the plugin once with the steps in Option C, then open the GitHub Copilot app and sign in with your GitHub account. The plugin's skills are available in every new session.</p>
+<h4 id="option-c-github-copilot-cli">Option C: GitHub Copilot CLI</h4>
+<ol>
+<li>In PowerShell, start GitHub Copilot CLI:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">copilot</span>
+</code></pre></div>
+<ol>
+<li>If it asks whether you trust the current folder, select <strong>Yes</strong>.</li>
+<li>If you are not signed in yet, type <code>/login</code>, press <strong>Enter</strong>, and follow the instructions to sign in with your GitHub account in the browser.</li>
+<li>Add the plugin marketplace. Type this and press <strong>Enter</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>/plugin marketplace add microsoft/Managed-Apps
+</code></pre></div>
+<ol>
+<li>Install the plugin:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>/plugin install microsoft-managed-apps@Managed-Apps
+</code></pre></div>
+<ol>
+<li>Type <code>/exit</code> and press <strong>Enter</strong>. The plugin loads the next time you start GitHub Copilot CLI.</li>
+</ol>
+<h3 id="step-10-sign-in-to-the-managed-apps-cli">Step 10: Sign in to the managed apps CLI</h3>
+<ol>
+<li>In PowerShell, run:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">ms</span> <span class="n">auth</span> <span class="n">login</span>
+</code></pre></div>
+<ol>
+<li>A browser window opens. Pick your <strong>training</strong> account (not your work account).</li>
+<li>Back in PowerShell, check which account is signed in:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">ms</span> <span class="n">auth</span> <span class="n">status</span>
+</code></pre></div>
+<ol>
+<li>Make sure the output shows your training account and tenant. If it shows the wrong account, run <code>ms auth logout</code> and repeat step 1.</li>
+</ol>
+<blockquote>
+<p>[!NOTE]
+The CLI and the browser sign in separately. Signing in with <code>ms auth login</code> does not change the account in your browser, and the other way round.</p>
+</blockquote>
+<p><strong>Checkpoint:</strong> <code>Install-Prerequisites.ps1 -CheckOnly</code> says <strong>All tools are ready</strong>, your coding agent has the managed apps plugin, and <code>ms auth status</code> shows your training account.</p>
+<p>You create the Microsoft Entra app registration for the starting app at the beginning of <a href="../02-pro-code/">Exercise 2</a>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/microsoft-365/admin/manage/apps/">Admin overview and creation-path defaults</a></li>
+<li><a href="https://learn.microsoft.com/microsoft-365/admin/manage/apps/governance">Governance settings and required roles</a></li>
+<li><a href="https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-faq">Licensing FAQ</a></li>
+<li><a href="https://learn.microsoft.com/microsoft-365/copilot-managed-runtime/developer/apps/">SDK prerequisites</a></li>
+<li><a href="https://learn.microsoft.com/microsoft-365/copilot-managed-runtime/developer/apps/quickstart-github-copilot">GitHub Copilot quickstart</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../javascripts/mermaid-init.js"></script>
+      
+        <script src="../javascripts/cc-card.js"></script>
+      
+        <script src="../javascripts/cc-next.js"></script>
+      
+    
+  </body>
+</html>

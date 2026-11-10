@@ -1,0 +1,1104 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on labs that take an internal app from an idea to a governed app published on the Copilot Managed Runtime.">
+      
+      
+      
+        <link rel="canonical" href="https://qmatteoq.github.io/copilot-managed-runtime-labs/01-no-code/">
+      
+      
+        <link rel="prev" href="../00-prerequisites/">
+      
+      
+        <link rel="next" href="../02-pro-code/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Exercise 1 - No-code with Code - Copilot Managed Runtime Labs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/labStyles.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#exercise-1-build-daily-meeting-briefing-with-code-no-code" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Copilot Managed Runtime Labs" class="md-header__button md-logo" aria-label="Copilot Managed Runtime Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Managed Runtime Labs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Exercise 1 - No-code with Code
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/qmatteoq/copilot-managed-runtime-labs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    qmatteoq/copilot-managed-runtime-labs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../00-prerequisites/" class="md-tabs__link">
+          
+  
+  
+  Get started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Copilot Managed Runtime Labs" class="md-nav__button md-logo" aria-label="Copilot Managed Runtime Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Copilot Managed Runtime Labs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/qmatteoq/copilot-managed-runtime-labs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    qmatteoq/copilot-managed-runtime-labs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 - No-code with Code
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 - No-code with Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-will-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you will build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-open-the-code-tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Open the Code tab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-describe-the-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Describe the app
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-watch-code-build-the-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Watch Code build the app
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-test-the-app-in-the-preview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Test the app in the preview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-ask-for-an-improvement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Ask for an improvement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-publish-and-share-the-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Publish and share the app
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-practice-the-administrator-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: Practice the administrator controls
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clean up
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-pro-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 - Pro-code with a coding agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="exercise-1-build-daily-meeting-briefing-with-code-no-code">Exercise 1: Build Daily Meeting Briefing with Code (no code)</h1>
+<p><a href="../">Overview</a> | <a href="../00-prerequisites/">Prerequisites</a> | <a href="../02-pro-code/">Next: Pro-code</a></p>
+<p><strong>Tool:</strong> the <strong>Code</strong> tab of the Microsoft 365 Copilot app, in your browser. <strong>Time:</strong> 75–90 minutes. <strong>Level:</strong> Beginner.</p>
+<blockquote>
+<p><strong>Videos for this exercise</strong> (narrated, voice only):</p>
+<ul>
+<li><a href="../videos/no-code-walkthrough.mp4">Build and publish the app</a> (90 seconds): steps 1-6, from the prompt to the published app. Watch it before you start.</li>
+<li><a href="../videos/billing-policy-setup.mp4">Set up a billing policy</a> (2 minutes): step 7a.</li>
+<li><a href="../videos/admin-controls.mp4">App controls for connectors and policies</a> (3 minutes): steps 7b and 7c.</li>
+</ul>
+</blockquote>
+<h2 id="what-you-will-build">What you will build</h2>
+<p><strong>Daily Meeting Briefing</strong> is a small web app that:</p>
+<ul>
+<li>Shows your Outlook calendar one day at a time.</li>
+<li>Shows the details of the meeting you select.</li>
+<li>When you select <strong>Generate briefing</strong>, it uses Work IQ to find related emails, Teams chats, earlier meetings and documents, and turns them into a short briefing.</li>
+</ul>
+<p>You build it by describing it in plain English. Code writes the app, connects it to your Microsoft 365 data through <strong>connectors</strong>, and runs it on <strong>Copilot Managed Runtime</strong>, Microsoft's hosting for these apps. You don't install anything, write code or create Azure resources.</p>
+<p><strong>Words used in this exercise:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Connector</strong></td>
+<td>A ready-made, governed link to a service, such as Office 365 Outlook. The app asks the connector for data instead of calling the service directly.</td>
+</tr>
+<tr>
+<td><strong>Work IQ</strong></td>
+<td>The Microsoft 365 service that finds work context (emails, chats, meetings and files) that you have access to.</td>
+</tr>
+<tr>
+<td><strong>Preview</strong></td>
+<td>The version of the app you test inside Code while you build it. Only you can use it.</td>
+</tr>
+<tr>
+<td><strong>Publish</strong></td>
+<td>Makes the current version available as a real app with its own web address.</td>
+</tr>
+<tr>
+<td><strong>Share</strong></td>
+<td>Gives other people permission to open the published app.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Before you start:</strong> complete <a href="../00-prerequisites/#part-1-everyone">Part 1 of the prerequisites</a>. You need the three Orion calendar events, the two emails, the document and the Teams message.</p>
+<h2 id="step-1-open-the-code-tab">Step 1: Open the Code tab</h2>
+<ol>
+<li>Open a Microsoft Edge InPrivate window (<strong>Ctrl+Shift+N</strong>).</li>
+<li>Go to <code>https://copilot.cloud.microsoft</code> and sign in with your <strong>training account</strong>.</li>
+<li>At the top of the left pane, select <strong>Code</strong>.</li>
+<li>If you see an earlier session, select <strong>New session</strong> in the left pane.</li>
+</ol>
+<p>You should see the heading <strong>Let's build something together.</strong> and a box that says <strong>Create anything</strong>.</p>
+<p><img alt="The Code tab of the Copilot app. The left pane shows the Home and Code tabs, New session and an empty Sessions list. The centre shows &quot;Let's build something together.&quot; and the Create anything box." src="../images/code-01-landing.png" /></p>
+<p><em>The Code tab before anything has been created (captured November 9, 2026). Labels can change while the product is in preview.</em></p>
+<p>The <strong>Auto Medium</strong> label in the box is the model picker. Leave it as it is.</p>
+<h2 id="step-2-describe-the-app">Step 2: Describe the app</h2>
+<ol>
+<li>Select the <strong>Create anything</strong> box.</li>
+<li>Copy the prompt below and paste it into the box (<strong>Ctrl+V</strong>). The text keeps its line breaks.</li>
+</ol>
+<div class="highlight"><pre><span></span><code>Create an internal web app called Daily Meeting Briefing.
+What it shows:
+- My Outlook calendar for one day at a time, starting with today, with Previous day, Today and Next day buttons.
+- The day's meetings as a timeline. All-day events at the top. Overlapping meetings side by side.
+- When I select a meeting: time, duration, location, organizer, attendees and agenda.
+Briefing:
+- Add a Generate briefing button for the selected meeting. Only when I click it, use Work IQ to find related emails, Teams chats, earlier meetings and documents I have access to.
+- Show the briefing in six sections: Purpose, Recent discussion, Documents, Open items, People, Talking points.
+- Link each fact to its source. If nothing relevant is found, say so. Never invent facts, people, documents or links.
+- Private meetings show as "Private appointment" and are never sent to Work IQ.
+Rules:
+- Read-only: never send email, change meetings or edit files.
+- Use the Office 365 Outlook connector for the calendar and Work IQ for the briefing. No mock or sample data.
+- Show clear messages for loading, a day with no meetings, missing permissions and errors.
+</code></pre></div>
+<ol>
+<li>Check that the whole prompt is in the box. You can scroll inside the box to see the beginning.</li>
+</ol>
+<p><img alt="The Create anything box filled with the Daily Meeting Briefing prompt. The send button (an up arrow) is at the bottom right of the box." src="../images/code-02-prompt.png" /></p>
+<ol>
+<li>Select the <strong>send</strong> button (the round button with an up arrow) at the bottom right of the box.</li>
+</ol>
+<p><strong>Why the prompt is written this way:</strong> each line describes something you can check later. The <strong>Rules</strong> section tells Code which connectors to use and what the app must never do. Being specific here saves you from fixing things afterwards.</p>
+<h2 id="step-3-watch-code-build-the-app">Step 3: Watch Code build the app</h2>
+<p>Code now works on its own. It usually takes <strong>10–20 minutes</strong>. You don't need to do anything, but keep the tab open.</p>
+<p>While it works:</p>
+<ul>
+<li>The prompt you sent appears at the top of the page.</li>
+<li>Short progress messages appear under it. Grey lines such as <strong>Ran 8 commands, used 2 tools</strong> are steps Code completed. Select one to see the details.</li>
+<li>A <strong>Stop</strong> button (a black square) replaces the send button. <strong>Don't select it</strong> unless you want to cancel the build.</li>
+<li>The <strong>Workspace</strong> pane on the right has three groups: <strong>Session &gt; Files</strong> (the app's source files), <strong>Output</strong> (the app) and <strong>Plugins &gt; Connectors</strong>.</li>
+</ul>
+<p><img alt="Code building the app. Progress messages include &quot;Now bind both connectors&quot;, &quot;Both bound with usable connections&quot; and &quot;Applying the theme (Rose preset)&quot;. The Workspace pane on the right shows Files, Open Daily Meeting Briefing and Connectors." src="../images/code-03-building.png" /></p>
+<p>These are the messages to look out for:</p>
+<table>
+<thead>
+<tr>
+<th>Message</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Now bind both connectors</strong></td>
+<td>Code is adding the Office 365 Outlook and Work IQ connectors to the app.</td>
+</tr>
+<tr>
+<td><strong>Both bound with usable connections</strong></td>
+<td>Both connectors are signed in with your account and ready to use.</td>
+</tr>
+<tr>
+<td><strong>Applying the theme</strong></td>
+<td>Code picked colours and styles. Yours may differ from the screenshots.</td>
+</tr>
+<tr>
+<td><strong>Typecheck and lint pass</strong></td>
+<td>Code checked its own code for mistakes.</td>
+</tr>
+<tr>
+<td><strong>Run pre-deploy gate and commit</strong></td>
+<td>Code is doing final checks and saving the version you will preview.</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Later in the build: &quot;Typecheck and lint pass. Now checking the live preview.&quot; followed by &quot;Running Run pre-deploy gate and commit&quot;." src="../images/code-04-checks.png" /></p>
+<p><strong>If Code asks you a question</strong> (for example, to sign in to a connector or allow access), read it and answer it. Use your training account. If a sign-in window opens, complete it and go back to the Code tab.</p>
+<p><strong>If you see an error</strong>, type this into the <strong>Ask a follow-up or request changes</strong> box at the bottom and send it:</p>
+<div class="highlight"><pre><span></span><code>The last step failed. Explain what went wrong in one sentence and fix it.
+</code></pre></div>
+<p>When Code finishes, the Stop button turns back into the send button. The chat shows:</p>
+<ul>
+<li>A summary of what Code built.</li>
+<li>A <strong>Remaining checks</strong> list. These are things Code couldn't test itself, such as whether a briefing returns real data. You test them in Step 4.</li>
+<li>A <strong>Daily Meeting Briefing</strong> card with an <strong>Open</strong> button.</li>
+</ul>
+<p>A <strong>Preview</strong> panel also opens on the right side of the page.</p>
+<h2 id="step-4-test-the-app-in-the-preview">Step 4: Test the app in the preview</h2>
+<p>The preview runs the app with <strong>your</strong> data. It can take a minute to load (you'll see <strong>Loading app preview…</strong>).</p>
+<p><img alt="The finished app in the Preview panel, next to the chat. The app shows Wednesday's events: an all-day event at the top and a 5 PM meeting in the timeline. The Publish button is at the top right of the panel." src="../images/code-05-preview.png" /></p>
+<p><em>Your app should look similar. The colours, layout and meetings will be different.</em></p>
+<p>The top of the Preview panel shows the app name and <strong>Updated just now</strong>, then three buttons: <strong>open in a new tab</strong> (a square with an arrow), <strong>Share</strong> and <strong>Publish</strong>. The <strong>⋯</strong> button opens more options.</p>
+<p>Test each item and tick it off:</p>
+<ol>
+<li><strong>Calendar for the lab day.</strong> Select <strong>Next day</strong> or <strong>Previous day</strong> until you reach the day you used in <a href="../00-prerequisites/#step-3-create-calendar-events-in-outlook">Prerequisites Step 3</a>.</li>
+<li>[ ] <strong>Orion launch week</strong> appears at the top as an all-day event.</li>
+<li>[ ] <strong>Orion launch – go/no-go review</strong> (10:00–11:00) and <strong>Orion pricing sync</strong> (10:30–11:15) appear <strong>side by side</strong>, because they overlap.</li>
+<li><strong>Meeting details.</strong> Select <strong>Orion launch – go/no-go review</strong>.</li>
+<li>[ ] The time, duration, location, organizer and the agenda you pasted are shown.</li>
+<li><strong>Briefing.</strong> With the go/no-go review still selected, select <strong>Generate briefing</strong> once. It can take about 30 seconds.</li>
+<li>[ ] The briefing has the six sections from your prompt.</li>
+<li>[ ] It mentions things from your training content, such as the <strong>14 March</strong> launch date or the <strong>German localisation</strong> question.</li>
+<li>[ ] Select one source link. It opens the email, chat or document that supports the fact.</li>
+<li><strong>Empty day.</strong> Move to a day with no meetings.</li>
+<li>[ ] The app says there are no meetings, rather than showing an error or invented data.</li>
+</ol>
+<p><strong>If the briefing says nothing relevant was found</strong>, that's the correct behaviour when Work IQ finds nothing. It usually means your training content isn't indexed yet. Run the check in <a href="../00-prerequisites/#step-6-check-that-copilot-can-find-your-training-content">Prerequisites Step 6</a> again, wait, and try <strong>Regenerate briefing</strong> later. Don't ask Code to "make it work". It might add fake data.</p>
+<p><strong>If something doesn't look right</strong>, describe the problem in the <strong>Ask a follow-up or request changes</strong> box, for example:</p>
+<div class="highlight"><pre><span></span><code>The two overlapping Orion meetings are shown on top of each other. Show overlapping meetings side by side in the timeline.
+</code></pre></div>
+<h3 id="look-at-the-apps-connections">Look at the app's connections</h3>
+<ol>
+<li>At the top right of the Preview panel, select <strong>⋯</strong>, then <strong>Daily Meeting Briefing settings</strong>.</li>
+<li>Select <strong>Connections</strong>. You see the two connectors that the app uses: <strong>Office 365 Outlook</strong> and <strong>Work IQ Copilot MCP</strong>.</li>
+</ol>
+<p><img alt="The Daily Meeting Briefing settings dialog. Connections is selected and lists Office 365 Outlook and Work IQ Copilot MCP. Data storage is the other option." src="../images/code-06-connections.png" /></p>
+<ol>
+<li>Select a connector to see its details and your connection status. You may see <strong>Some settings could not be read or are not supported</strong>. This is expected in the preview.</li>
+<li>Close the dialog with the <strong>X</strong>.</li>
+</ol>
+<p><strong>Behind the scenes:</strong> the app never sees your password or a Microsoft Graph token. It asks the connector for data, the connector calls Microsoft 365 with <strong>your</strong> permissions, and the administrator's policies decide which connectors and actions are allowed. You'll look at those policies in Step 7.</p>
+<h2 id="step-5-ask-for-an-improvement">Step 5: Ask for an improvement</h2>
+<p>Apps built with Code are changed the same way they are created: by asking.</p>
+<ol>
+<li>Select the <strong>Ask a follow-up or request changes</strong> box at the bottom of the chat.</li>
+<li>Paste this prompt and select <strong>send</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>Keep the existing connectors and the read-only rules. Make these changes:
+- Show the time zone next to the date at the top.
+- Add a Refresh button that reloads the calendar for the selected day.
+- If the briefing fails, show a Try again button. Don't retry automatically.
+</code></pre></div>
+<ol>
+<li>Wait for Code to finish (usually a few minutes). The preview reloads and shows <strong>Updated just now</strong>.</li>
+<li>Check that the time zone and the <strong>Refresh</strong> button are visible, and select <strong>Refresh</strong> once.</li>
+</ol>
+<h2 id="step-6-publish-and-share-the-app">Step 6: Publish and share the app</h2>
+<p>Until now, only you can use the app inside Code. Publishing gives it its own web address on Copilot Managed Runtime.</p>
+<h3 id="publish">Publish</h3>
+<ol>
+<li>At the top right of the Preview panel, select <strong>Publish</strong>.</li>
+<li>The button shows <strong>Publishing…</strong> for a few seconds. There's no confirmation dialog.</li>
+<li>A message appears: <strong>Your app is published. Your changes are available to everyone who has access to this app.</strong></li>
+</ol>
+<p><img alt="The &quot;Your app is published&quot; message at the top right of the Preview panel, with Open app and Share buttons." src="../images/code-07-published.png" /></p>
+<ol>
+<li>Select <strong>Open app</strong>. The app opens in a new browser tab.</li>
+</ol>
+<p>Each time you change the app later, select <strong>Publish</strong> again. Until you do, people using the published app keep seeing the previous version.</p>
+<h3 id="open-the-published-app">Open the published app</h3>
+<ol>
+<li>In the new tab, if you're asked to pick an account, select your training account.</li>
+<li>You see <strong>Fetching your app…</strong>, then the app.</li>
+<li>The first time you open the published app, it asks: <strong>Allow Daily Meeting Briefing to access your data?</strong> It lists the two connectors. A green tick means you already have a working connection for that connector.</li>
+</ol>
+<p><img alt="The published app with the &quot;Allow Daily Meeting Briefing to access your data?&quot; dialog. It lists Office 365 Outlook and Work IQ Copilot MCP, each with a green tick, and the Allow and Don't allow buttons." src="../images/code-08-consent.png" /></p>
+<ol>
+<li>Read the list, then select <strong>Allow</strong>.</li>
+<li>Go to your lab day and generate one briefing, as in Step 4.</li>
+<li>Look at the address bar. The published app runs at an address that starts with <code>https://play.preview.managedapps.cloud.microsoft/apps/</code>. Copy this address. It's the <strong>published app URL</strong>.</li>
+</ol>
+<p><strong>Why the dialog appears:</strong> the preview inside Code uses the maker's connections. The published app asks <strong>each user</strong> to allow it to use their own connections. Every user sees only their own calendar and the content they already have access to.</p>
+<h3 id="share-with-one-colleague">Share with one colleague</h3>
+<p>Do this only if your facilitator has paired you with a colleague in the same tenant.</p>
+<ol>
+<li>Go back to the Code tab.</li>
+<li>At the top of the Preview panel, select <strong>Share</strong> (the icon to the left of <strong>Publish</strong>).</li>
+<li>Enter your colleague's name and select them from the list.</li>
+<li>Give them permission to <strong>use</strong> the app only. Don't give edit permission and don't share with the whole organization.</li>
+<li>Confirm the share, then send your colleague the published app URL in a Teams chat.</li>
+<li>Ask your colleague to open the URL and select <strong>Allow</strong>.</li>
+<li>[ ] They see <strong>their own</strong> calendar, not yours.</li>
+</ol>
+<p><strong>Behind the scenes:</strong> sharing gives your colleague permission to open the app. It doesn't give them access to your mailbox, chats or files. If your colleague can't open the app, the cause is usually the sharing permission, their license (see Step 7) or a policy, not their data access.</p>
+<p><strong>Checkpoint:</strong> your app is published, you can open it from its own URL, and you've generated at least one briefing there.</p>
+<h2 id="step-7-practice-the-administrator-controls">Step 7: Practice the administrator controls</h2>
+<p>Copilot Managed Runtime apps are controlled from the <strong>Microsoft 365 admin center</strong>. In this step you look at three areas: <strong>billing</strong>, <strong>connectors and actions</strong>, and <strong>sharing and app inventory</strong>.</p>
+<blockquote>
+<p><strong>Important:</strong> You need an administrator role. If your training account isn't an administrator, pair with your facilitator and follow along. Change settings <strong>only in a training tenant</strong>, and write down every original value so you can put it back at the end.</p>
+</blockquote>
+<h3 id="7a-billing-who-pays-to-run-the-app">7a. Billing: who pays to run the app</h3>
+<p>Running a Copilot Managed Runtime app costs <strong>0.1 Copilot Credits per API call</strong>. A call happens each time the app opens or reads data through a connector, so one click can make several calls. Work IQ is billed separately. Users are covered either by a <strong>Power Apps Premium</strong> license or by a <strong>spending policy</strong> that lets them use Copilot Credits.</p>
+<p>You create a spending policy that covers the whole tenant.</p>
+<blockquote>
+<p><strong>Watch first:</strong> the <a href="../videos/billing-policy-setup.mp4">2-minute narrated video</a> walks through every screen of the wizard below.</p>
+</blockquote>
+<p><strong>Roles:</strong> you need <strong>Global administrator</strong> or <strong>Billing administrator</strong> to create a spending policy.</p>
+<h4 id="check-that-usage-based-billing-is-set-up">Check that usage-based billing is set up</h4>
+<ol>
+<li>Go to <code>https://admin.microsoft.com</code> and sign in with an administrator account.</li>
+<li>In the left menu, select <strong>Copilot</strong> &gt; <strong>Cost management</strong>. If you don't see <strong>Copilot</strong>, select <strong>Show all</strong> first.</li>
+<li>If you see a <strong>Get started</strong> button, usage-based billing isn't set up in this tenant yet, and it needs a billing method. Ask your facilitator to set it up (<a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup">setup steps</a>), then continue.</li>
+</ol>
+<h4 id="create-the-spending-policy">Create the spending policy</h4>
+<ol>
+<li>Select the <strong>Configuration</strong> tab, then <strong>+ Add spending policy</strong>. A wizard with six steps opens.</li>
+<li><strong>Policy scope:</strong></li>
+<li>In <strong>Give this spending policy a name</strong>, type <code>Managed apps lab</code>.</li>
+<li>Under <strong>Policy scope</strong>, keep <strong>Identity</strong> and <strong>All users</strong>. The policy covers everyone in the tenant.</li>
+<li>Select <strong>Next</strong>.</li>
+<li><strong>Agents and services:</strong> make sure <strong>Copilot Managed Runtime</strong> is checked. It's the service that runs your apps. Leave the other items as they are and select <strong>Next</strong>.</li>
+<li><strong>Limits and alerts:</strong></li>
+<li>Under <strong>Set the monthly spending limit for this policy</strong>, select <strong>Limit monthly spending</strong>. Enter at least the minimum shown under the box. The minimum depends on how many users the policy covers (for example, 50,000 credits, about $500 a month).</li>
+<li>Under <strong>Select monthly budget limits for users</strong>, select <strong>Limit monthly spending per user</strong>. Enter at least the minimum shown under the box (for example, 2,000 credits, about $20 a month).</li>
+<li>Leave <strong>Define alerts</strong> off and select <strong>Next</strong>. If <strong>Next</strong> is greyed out, one of the values is below the minimum; the box with the red outline tells you which.</li>
+<li><strong>Model template:</strong> keep <strong>Apply model selection automatically</strong> and select <strong>Next</strong>.</li>
+<li><strong>Billing method:</strong> keep the default billing method (your Azure subscription) and select <strong>Next</strong>. If the tenant has prepaid credits, they are used first.</li>
+<li><strong>Review and add policy:</strong> check the summary, then select <strong>Create spending policy</strong>.</li>
+</ol>
+<p>You return to the <strong>Configuration</strong> tab, where a green banner confirms the policy was added. <strong>Managed apps lab</strong> appears in the list as <strong>Enabled</strong> and applies right away. Usage reports can take up to 24 hours to show data.</p>
+<blockquote>
+<p><strong>Note:</strong> If a user is covered by more than one spending policy, the one with the <strong>highest</strong> limit applies. If your tenant already has a policy with no limit for all users, that policy wins over this one.</p>
+<p><strong>Tip:</strong> To cover only yourself instead of the whole tenant, in step 2 switch from <strong>All users</strong> to <strong>Specific groups</strong> and pick a group that contains only your training account.</p>
+</blockquote>
+<h3 id="7b-connectors-and-action-level-security">7b. Connectors and action-level security</h3>
+<p>The administrator controls which connectors apps can use, and also which <strong>actions</strong> each connector can perform. For example, an app can be allowed to read calendar events but not to send email.</p>
+<blockquote>
+<p><strong>Watch first:</strong> the <a href="../videos/admin-controls.mp4">3-minute narrated video</a> tours every screen in 7b and 7c.</p>
+</blockquote>
+<ol>
+<li>In the Microsoft 365 admin center (<a href="https://admin.cloud.microsoft">admin.cloud.microsoft</a>), select <strong>Apps</strong> &gt; <strong>Settings</strong> &gt; <strong>Environment groups</strong>.</li>
+<li>Select <strong>Default Environment Group</strong>. Its page shows four rules: <strong>Routing</strong>, <strong>Connectors and MCP servers</strong>, <strong>Sharing</strong> and <strong>Content security policy</strong>. The <strong>Managed by</strong> column shows who maintains each rule: <strong>Microsoft</strong>, or your organization once an admin has edited it.</li>
+<li>Select <strong>Connectors and MCP servers</strong>. The <strong>Control data sources for apps</strong> panel opens. Its heading shows how many connectors are <strong>Allowed</strong> and how many are <strong>Blocked</strong>. The list shows the allowed ones, and the <strong>Allowed actions</strong> column shows either <strong>All actions</strong> or a number.</li>
+<li>Type <strong>Outlook</strong> in the search box. Find <strong>Office 365 Outlook</strong> and note its <strong>Allowed actions</strong>.</li>
+<li>Select the checkbox next to <strong>Office 365 Outlook</strong>, then select <strong>Edit actions</strong>. Every action has its own <strong>On</strong> checkbox. Scroll to actions such as <strong>Get emails</strong>, <strong>Send an email</strong> and <strong>Delete email</strong>.</li>
+<li>Select <strong>Cancel</strong> to close the list without saving.</li>
+<li>Select <strong>Add connectors</strong>. The <strong>Connector catalog</strong> opens, listing the connectors you can allow. Search for <strong>Salesforce</strong> to see how a new connector would be added, then select <strong>Cancel</strong>.</li>
+</ol>
+<p><strong>Try it (training tenant only, with your facilitator's approval):</strong></p>
+<ol>
+<li>In the <strong>Control data sources for apps</strong> panel, select the checkbox next to <strong>Office 365 Outlook</strong> &gt; <strong>Edit actions</strong>.</li>
+<li>Clear the <strong>On</strong> checkbox for the action that reads calendar events. Write down its exact name so you can turn it back on.</li>
+<li>Select <strong>Save</strong>.</li>
+<li>Open your published app and select <strong>Refresh</strong> (or <strong>Today</strong>).</li>
+<li>Turn the action back <strong>on</strong> at the end of the lab and save.</li>
+</ol>
+<blockquote>
+<p><strong>Policy changes are not instant.</strong> It can take <strong>several minutes, and sometimes much longer</strong>, before a change reaches running apps. You will probably <strong>not</strong> see the calendar blocked straight away. Carry on with 7c, then come back and select <strong>Refresh</strong> in the app again. If you still don't see the block before the end of the lab, that's expected; your facilitator will show what it looks like. When the change applies, the app should show a permission or policy message, not an empty calendar or sample data. Turning the action back on takes the same time to apply.</p>
+</blockquote>
+<p><strong>Remember:</strong> a connector in the allow list doesn't mean all of its actions are allowed. Always check the actions, especially the ones that send, change or delete data.</p>
+<h3 id="7c-sharing-content-security-and-app-inventory">7c. Sharing, content security and app inventory</h3>
+<ol>
+<li>Go back to the environment group page from 7b.</li>
+<li>Select <strong>Sharing</strong>. The banner says <strong>Built-in protection for every app, Managed by Microsoft</strong>. Shared links can be opened by <strong>Anyone in the org</strong> or <strong>Only the users and groups selected when the app is shared</strong>. A separate checkbox decides whether <strong>guest users</strong> can open apps from shared links. Select <strong>Close</strong>.</li>
+<li>Select <strong>Content security policy</strong>. It limits which addresses an app can load content from or contact from the browser. Look at the list of directives, such as <strong>Default-src</strong> and <strong>Connect-src</strong>. This is why an app that calls an external web address directly can work on a developer's PC but be blocked once it's hosted. Select <strong>Close</strong> without changing anything.</li>
+<li>Select <strong>Apps</strong> &gt; <strong>All apps</strong> in the left menu. Find <strong>Daily Meeting Briefing</strong>. It can take some time to appear after you publish.</li>
+<li>Open the app and select the <strong>Connectors</strong> tab. It lists the connectors the app uses, such as <strong>Work IQ Copilot MCP</strong> and <strong>Office 365 Outlook</strong>. Compare them with what you saw in 7b. Note the <strong>Block</strong> button at the top: an admin can block a single app without touching any rule. Don't select it.</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> <strong>Sharing</strong> and <strong>Content security policy</strong> are managed by Microsoft by default. To change them you select <strong>Edit this rule</strong>, and from then on Microsoft stops updating that rule automatically. The same happens to the connector list once you edit it: the <strong>Managed by</strong> column changes to your organization.</p>
+</blockquote>
+<p><strong>Checkpoint:</strong> you can explain who pays to run the app, the difference between allowing a connector and allowing its actions, why sharing an app doesn't share your data, and why a policy change doesn't apply instantly.</p>
+<h2 id="clean-up">Clean up</h2>
+<ol>
+<li>If you turned off a connector action in 7b, turn it back on and save. Remember that this can also take a while to apply.</li>
+<li>If you shared the app, ask your facilitator whether to remove your colleague's access. In Code, select <strong>Share</strong> and remove them.</li>
+<li>Keep the spending policy if you're doing Exercise 2 in the same tenant. Otherwise, on the <strong>Copilot</strong> &gt; <strong>Cost management</strong> &gt; <strong>Configuration</strong> tab, select <strong>⋮</strong> next to <strong>Managed apps lab</strong> &gt; <strong>Delete</strong>.</li>
+<li>Keep your published app URL. Your facilitator may ask you to show it.</li>
+</ol>
+<p><strong>Next:</strong> <a href="../02-pro-code/">Exercise 2: Pro-code</a></p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/microsoft-365/admin/manage/apps/governance">Copilot Managed Runtime default governance settings</a></li>
+<li><a href="https://learn.microsoft.com/microsoft-365/copilot-managed-runtime/developer/apps/share-app">Share a Copilot Managed Runtime app</a></li>
+<li><a href="https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-faq">Licensing FAQ for Copilot Managed Runtime apps</a></li>
+<li><a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits">Manage spending policies for Copilot Credits</a></li>
+<li><a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup">Set up usage-based billing for Copilot Credits</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../javascripts/mermaid-init.js"></script>
+      
+        <script src="../javascripts/cc-card.js"></script>
+      
+        <script src="../javascripts/cc-next.js"></script>
+      
+    
+  </body>
+</html>
