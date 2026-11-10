@@ -1,6 +1,6 @@
 # Exercise 1: Build Daily Meeting Briefing with Code (no code)
 
-[Overview](../README.md) | [Prerequisites](00-prerequisites.md) | [Next: Pro-code](02-pro-code.md)
+[Overview](index.md) | [Prerequisites](00-prerequisites.md) | [Next: Pro-code](02-pro-code.md)
 
 **Tool:** the **Code** tab of the Microsoft 365 Copilot app, in your browser. **Time:** 75–90 minutes. **Level:** Beginner.
 

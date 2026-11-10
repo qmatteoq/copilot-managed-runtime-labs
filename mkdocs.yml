@@ -1,0 +1,61 @@
+site_name: Copilot Managed Runtime Labs
+site_description: Hands-on labs that take an internal app from an idea to a governed app published on the Copilot Managed Runtime.
+site_url: https://qmatteoq.github.io/copilot-managed-runtime-labs
+repo_url: https://github.com/qmatteoq/copilot-managed-runtime-labs
+repo_name: qmatteoq/copilot-managed-runtime-labs
+edit_uri: ''                    # Disable edit button
+
+theme:
+  name: 'material'
+  palette:
+    scheme: default
+    primary: custom
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.tabs         # Top nav
+    - navigation.tabs.sticky  # Keep top nav visible
+    - navigation.sections
+    - toc.integrate
+    - content.code.copy
+    - content.tabs.link
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      toc_depth: 2
+
+extra_javascript:
+  - https://unpkg.com/mermaid@11/dist/mermaid.min.js
+  - javascripts/mermaid-init.js
+  - javascripts/cc-card.js
+  - javascripts/cc-next.js
+
+extra_css:
+  - stylesheets/labStyles.css
+  - stylesheets/extra.css
+
+plugins:
+  - search
+
+exclude_docs: |
+  authoring-notes.md
+
+nav:
+  - Home: 'index.md'
+  - Get started:
+    - Prerequisites: '00-prerequisites.md'
+  - Labs:
+    - 'Exercise 1 - No-code with Code': '01-no-code.md'
+    - 'Exercise 2 - Pro-code with a coding agent': '02-pro-code.md'

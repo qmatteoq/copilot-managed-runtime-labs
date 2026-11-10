@@ -1,6 +1,6 @@
 # Exercise 2: Bring Inbox Context Desk to Copilot Managed Runtime
 
-[Overview](../README.md) | [Prerequisites](00-prerequisites.md) | [Exercise 1: No-code](01-no-code.md)
+[Overview](index.md) | [Prerequisites](00-prerequisites.md) | [Exercise 1: No-code](01-no-code.md)
 
 **Path:** a coding agent (VS Code, the GitHub Copilot app or GitHub Copilot CLI), React/TypeScript, Managed Runtime CLI. **Time:** 120-150 minutes. **Level:** Intermediate.
 
@@ -8,7 +8,7 @@
 
 You have a conventional web app that reads Outlook mail through Microsoft Graph. You use a coding agent to move its identity, data access, hosting and governance to Copilot Managed Runtime, without rebuilding its UI.
 
-The supplied [starter](../samples/inbox-context-desk/README.md) implements a real direct-API baseline. Its context button finds related inbox messages using Graph subject search. After migration, Outlook supplies mail and **Work IQ Copilot MCP** adds grounded organizational context. This is intentionally a capability expansion: email search is not an equivalent substitute for Work IQ.
+The supplied [starter](https://github.com/qmatteoq/copilot-managed-runtime-labs/tree/main/samples/inbox-context-desk) implements a real direct-API baseline. Its context button finds related inbox messages using Graph subject search. After migration, Outlook supplies mail and **Work IQ Copilot MCP** adds grounded organizational context. This is intentionally a capability expansion: email search is not an equivalent substitute for Work IQ.
 
 You will map the app's external calls, turn it into a managed app, swap Graph calls for connectors, publish a reviewed commit, and see why local development, cloud preview and the live app can show different versions.
 

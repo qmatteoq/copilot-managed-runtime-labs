@@ -1,6 +1,6 @@
 # Before you start
 
-[Overview](../README.md) | [Exercise 1: No-code](01-no-code.md) | [Exercise 2: Pro-code](02-pro-code.md)
+[Overview](index.md) | [Exercise 1: No-code](01-no-code.md) | [Exercise 2: Pro-code](02-pro-code.md)
 
 Complete this page before the lab starts. Part 1 is for everyone. Part 2 is only needed for Exercise 2 (pro-code).
 

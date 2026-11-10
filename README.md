@@ -17,6 +17,10 @@ Both paths converge on the same runtime: Microsoft-managed hosting, Entra sign-i
 
 The exercises follow the Agent 365 labs' scenario, objectives, step, and checkpoint structure. The pro-code prompts explain what to ask GitHub Copilot, what changes, what happens behind the scenes, and how to verify the result.
 
+## Lab website
+
+The exercises are also published as a website at https://qmatteoq.github.io/copilot-managed-runtime-labs. The [Deploy Documentation](.github/workflows/deploy-docs.yml) workflow rebuilds it with MkDocs Material on every push to `main` that changes `docs/` or `mkdocs.yml`. To preview it locally, run `pip install -r requirements.txt` and then `mkdocs serve`.
+
 ## Preview status
 
 This is a **first lab draft**, grounded in the author's Daily Meeting Briefing app, Inbox Context Desk sample, slides 39-68 of the FY27 Agentic Bootcamp Day 3 deck, installed CLI help, and current Microsoft Learn documentation. See [source and verification notes](docs/authoring-notes.md) for what was inspected and what still needs a tenant walkthrough before teaching.
