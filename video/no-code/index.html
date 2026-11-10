@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Segoe UI"; src: local("Segoe UI"); font-weight: 400; }
+      @font-face { font-family: "Segoe UI Semibold"; src: local("Segoe UI Semibold"); font-weight: 600; }
+      :root {
+        --ground: #8c0f2e;
+        --ink: #ffffff;
+        --accent: #ffc94d;
+        --font-display: "Segoe UI Semibold", "Segoe UI", sans-serif;
+        --font-body: "Segoe UI", sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--ground); font-family: var(--font-body); color: var(--ink); }
+
+      #stage { position: absolute; left: 0; top: 0; width: 10000px; height: 1400px; transform-origin: 0 0; }
+      .win { position: absolute; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 40px 80px rgba(0, 0, 0, 0.35); }
+      .win img { position: absolute; left: 0; top: 0; display: block; }
+
+      /* Hook */
+      #hook { position: absolute; left: 0; top: 0; width: 1500px; height: 1000px; }
+      #day { position: absolute; left: 40px; top: 210px; font: 600 44px var(--font-display); opacity: 0.8; }
+      #clock { position: absolute; left: 30px; top: 250px; font: 600 230px/1 var(--font-display); letter-spacing: -0.03em; }
+      #cal { position: absolute; left: 640px; top: 40px; width: 820px; height: 920px; color: #242424; }
+      #cal .head { position: absolute; left: 32px; top: 24px; font: 600 34px var(--font-display); }
+      #cal .allday { position: absolute; left: 90px; top: 80px; width: 690px; height: 44px; border-radius: 8px; background: #f3e1e5; border-left: 6px solid #8c0f2e; font: 600 28px/44px var(--font-body); padding-left: 14px; }
+      #cal .row { position: absolute; left: 24px; width: 772px; border-top: 1px solid #e3e3e3; font: 28px var(--font-body); color: #6f6f6f; padding-top: 6px; }
+      #cal .ev { position: absolute; border-radius: 8px; background: #8c0f2e; color: #fff; padding: 10px 14px; font: 600 28px/1.15 var(--font-body); }
+      #cal .ev span { display: block; font-weight: 400; font-size: 28px; opacity: 0.9; margin-top: 2px; }
+      #cal .ev.alt { background: #f3e1e5; color: #5c0a1f; border-left: 6px solid #8c0f2e; }
+      .art { position: absolute; width: 600px; background: #fff; color: #242424; border-radius: 12px; box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3); padding: 18px 22px 18px 34px; }
+      .art::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 10px; border-radius: 12px 0 0 12px; background: var(--c); }
+      .art b { display: block; font: 600 28px var(--font-body); color: #5c5c5c; }
+      .art i { display: block; font: 400 30px/1.25 var(--font-body); font-style: normal; margin-top: 4px; }
+
+      /* Highlights and cursor live in stage space */
+      .hl { position: absolute; overflow: visible; pointer-events: none; opacity: 0; }
+      .hl rect { fill: none; stroke: var(--accent); stroke-width: 6; stroke-linecap: round; }
+      #scrim { position: absolute; left: 5900px; top: 0; width: 1689px; height: 1135px; background: rgba(0, 0, 0, 0.35); border-radius: 14px; opacity: 0; }
+      #cursor { position: absolute; left: 0; top: 0; width: 44px; height: 44px; opacity: 0; }
+      #cursor .ring { position: absolute; left: -26px; top: -26px; width: 52px; height: 52px; border-radius: 50%; border: 5px solid var(--accent); opacity: 0; }
+
+      /* Type scenes */
+      .line { position: absolute; left: 160px; font: 600 92px/1.1 var(--font-display); letter-spacing: -0.015em; white-space: nowrap; }
+      #kicker { position: absolute; left: 164px; top: 190px; font: 400 34px var(--font-body); opacity: 0.85; }
+      .admin { top: 250px; }
+      #end1 { top: 330px; }
+      #end2 { top: 440px; }
+      #end2 em { font-style: normal; color: var(--accent); }
+      #endsub { position: absolute; left: 164px; top: 600px; font: 400 34px var(--font-body); opacity: 0.85; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="85.6" data-width="1920" data-height="1080">
+      <div id="stage" class="clip" data-start="0" data-duration="85.6" data-track-index="0">
+        <!-- Hook: Monday 9:50 -->
+        <div id="hook">
+          <div id="day">Monday</div>
+          <div id="clock">9:50</div>
+          <div id="cal" class="win">
+            <div class="head">Today</div>
+            <div class="allday">Orion launch week</div>
+            <div class="row" style="top:150px">9 AM</div>
+            <div class="row" style="top:270px">10 AM</div>
+            <div class="row" style="top:390px">11 AM</div>
+            <div class="row" style="top:510px">12 PM</div>
+            <div class="row" style="top:630px">1 PM</div>
+            <div class="row" style="top:750px">2 PM</div>
+            <div class="ev" style="left:90px; top:272px; width:340px; height:116px">Go/no-go review<span>10:00 – 11:00</span></div>
+            <div class="ev alt" style="left:440px; top:332px; width:340px; height:88px">Orion pricing sync<span>10:30 – 11:15</span></div>
+          </div>
+          <div class="art" id="art1" style="--c:#0f6cbd; left:40px; top:560px"><b>Email</b><i>Orion launch: decision on launch date</i></div>
+          <div class="art" id="art2" style="--c:#5b5fc7; left:110px; top:700px"><b>Teams chat</b><i>Finance has not confirmed the 60/40 budget split yet.</i></div>
+          <div class="art" id="art3" style="--c:#185abd; left:60px; top:850px"><b>Document</b><i>Orion launch plan</i></div>
+        </div>
+
+        <!-- A: Code landing, then the prompt -->
+        <div class="win" style="left:1900px; top:0; width:1689px; height:990px">
+          <img id="shot01" src="assets/shots/code-01-landing.png" width="1689" height="840" alt="" />
+          <img id="shot02" src="assets/shots/code-02-prompt.png" width="1689" height="990" alt="" style="opacity:0" />
+        </div>
+        <!-- B: build, then checks -->
+        <div class="win" style="left:3900px; top:-100px; width:1689px; height:1140px">
+          <img id="shot03" src="assets/shots/code-03-building.png" width="1689" height="1140" alt="" />
+          <img id="shot04" src="assets/shots/code-04-checks.png" width="1689" height="1140" alt="" style="opacity:0" />
+        </div>
+        <!-- C: preview, connections dialog, publish toast -->
+        <div class="win" style="left:5900px; top:0; width:1689px; height:1135px">
+          <img src="assets/shots/code-05-preview.png" width="1689" height="1135" alt="" />
+        </div>
+        <div id="shot07" class="win" style="left:6647px; top:0; width:942px; height:560px; opacity:0; box-shadow:none; border-radius:0 14px 0 0">
+          <img src="assets/shots/code-07-published.png" width="942" height="560" alt="" />
+        </div>
+        <div id="scrim"></div>
+        <div id="shot06" class="win" style="left:6345px; top:239px; width:800px; height:657px; opacity:0">
+          <img src="assets/shots/code-06-connections.png" width="800" height="657" alt="" />
+        </div>
+        <!-- D: the published app asks for consent -->
+        <div class="win" style="left:7900px; top:100px; width:1689px; height:840px">
+          <img src="assets/shots/code-08-consent.png" width="1689" height="840" alt="" />
+        </div>
+
+        <div id="hls"></div>
+        <div id="cursor">
+          <div class="ring"></div>
+          <svg width="44" height="44" viewBox="0 0 24 24"><path d="M3 2l7.5 19 2.6-7.4L20.5 11z" fill="#111" stroke="#fff" stroke-width="1.6" stroke-linejoin="round" /></svg>
+        </div>
+      </div>
+
+      <div id="kicker" class="clip" data-start="70.57" data-duration="8.12" data-track-index="2" style="opacity:0">Then the admins take over</div>
+      <div id="adm1" class="line admin clip" data-start="70.57" data-duration="8.12" data-track-index="3" style="opacity:0">Billing policy</div>
+      <div id="adm2" class="line admin clip" data-start="70.57" data-duration="8.12" data-track-index="4" style="opacity:0">Connector and action rules</div>
+      <div id="adm3" class="line admin clip" data-start="70.57" data-duration="8.12" data-track-index="5" style="opacity:0">Sharing rules</div>
+      <div id="end1" class="line clip" data-start="78.69" data-duration="6.91" data-track-index="2" style="opacity:0">One prompt.</div>
+      <div id="end2" class="line clip" data-start="78.69" data-duration="6.91" data-track-index="3" style="opacity:0">A <em>governed</em> app your team can open.</div>
+      <div id="endsub" class="clip" data-start="78.69" data-duration="6.91" data-track-index="4" style="opacity:0">Copilot Managed Runtime lab · Exercise 1</div>
+
+      <audio id="vo01" class="clip" src="assets/voice/s01-hook.wav" data-start="0.3" data-duration="9.53" data-track-index="10"></audio>
+      <audio id="vo02" class="clip" src="assets/voice/s02-landing.wav" data-start="10.7" data-duration="4.63" data-track-index="10"></audio>
+      <audio id="vo03" class="clip" src="assets/voice/s03-prompt.wav" data-start="16.33" data-duration="8.4" data-track-index="10"></audio>
+      <audio id="vo04" class="clip" src="assets/voice/s04-build.wav" data-start="25.73" data-duration="7.32" data-track-index="10"></audio>
+      <audio id="vo05" class="clip" src="assets/voice/s05-checks.wav" data-start="34.05" data-duration="6" data-track-index="10"></audio>
+      <audio id="vo06" class="clip" src="assets/voice/s06-preview.wav" data-start="41.05" data-duration="5.59" data-track-index="10"></audio>
+      <audio id="vo07" class="clip" src="assets/voice/s07-connections.wav" data-start="47.64" data-duration="7.38" data-track-index="10"></audio>
+      <audio id="vo08" class="clip" src="assets/voice/s08-publish.wav" data-start="56.02" data-duration="6.3" data-track-index="10"></audio>
+      <audio id="vo09" class="clip" src="assets/voice/s09-consent.wav" data-start="63.32" data-duration="6.55" data-track-index="10"></audio>
+      <audio id="vo10" class="clip" src="assets/voice/s10-admin.wav" data-start="70.87" data-duration="7.12" data-track-index="10"></audio>
+      <audio id="vo11" class="clip" src="assets/voice/s11-close.wav" data-start="78.99" data-duration="3.59" data-track-index="10"></audio>
+    </div>
+    <script>
+      // Scene starts (s); each voice clip begins 0.3 s after its scene.
+      const S = [0, 10.4, 16.03, 25.43, 33.75, 40.75, 47.34, 55.72, 63.02, 70.57, 78.69];
+      const V = (i, t) => S[i] + 0.3 + t;
+
+      // Highlight rectangles in stage coordinates.
+      const HL = {
+        h1: [722, 302, 356, 136],
+        h2: [2520, 562, 676, 148],
+        h3: [4332, 232, 752, 124],
+        h4: [4332, 730, 520, 122],
+        h5: [6720, 826, 838, 80],
+        h6: [6555, 430, 556, 206],
+        h7: [7222, 94, 326, 156],
+        h8: [8442, 680, 612, 158],
+      };
+      const hls = document.getElementById("hls");
+      for (const [id, [x, y, w, h]] of Object.entries(HL)) {
+        hls.insertAdjacentHTML(
+          "beforeend",
+          `<svg class="hl" id="${id}" style="left:${x}px;top:${y}px" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><rect x="3" y="3" width="${w - 6}" height="${h - 6}" rx="12" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>`
+        );
+      }
+
+      const tl = gsap.timeline({ paused: true });
+      const stage = "#stage";
+      gsap.set(stage, { transformOrigin: "0 0" });
+      const camSet = (cx, cy, s) => ({ x: 960 - cx * s, y: 540 - cy * s, scale: s });
+      const cam = (t, cx, cy, s, d, ease = "power2.inOut") => tl.to(stage, { ...camSet(cx, cy, s), duration: d, ease }, t);
+      const draw = (id, t, hold) => {
+        tl.fromTo(`#${id} rect`, { attr: { "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.5, ease: "power2.out" }, t);
+        tl.set(`#${id}`, { opacity: 1 }, t);
+        tl.to(`#${id}`, { opacity: 0, duration: 0.3 }, t + hold);
+      };
+      const cursorTo = (t, x, y, d = 0.8) => tl.to("#cursor", { x, y, duration: d, ease: "power3.inOut" }, t);
+      const click = (t) => {
+        tl.to("#cursor svg", { scale: 0.8, duration: 0.06, transformOrigin: "3px 2px" }, t);
+        tl.to("#cursor svg", { scale: 1, duration: 0.1 }, t + 0.06);
+        tl.fromTo("#cursor .ring", { scale: 0.4, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.45, ease: "power2.out" }, t);
+      };
+
+      tl.set(stage, camSet(750, 500, 1.0), 0);
+      tl.set(".hl", { opacity: 0 }, 0);
+
+      // 1. Hook: 9:50 Monday, the review is at 10, context is everywhere.
+      cam(0.4, 820, 500, 1.06, 9.6, "sine.inOut");
+      draw("h1", V(0, 2.3), 4.6);
+      ["#art1", "#art2", "#art3"].forEach((a, k) => {
+        tl.fromTo(a, { opacity: 0, x: -70, rotation: 0 }, { opacity: 1, x: 0, rotation: [-2.2, 1.6, -1.2][k], duration: 0.45, ease: "power3.out" }, V(0, 6.9 + k * 0.55));
+      });
+
+      // 2. Open the Code tab.
+      cam(S[1], 2745, 440, 1.0, 1.3);
+      cam(S[1] + 1.5, 2870, 500, 1.45, 3.9, "sine.inOut");
+
+      // 3. The prompt, the Rules, send.
+      tl.to("#shot02", { opacity: 1, duration: 0.5 }, S[2]);
+      cam(S[2], 2870, 560, 1.32, 1.2);
+      cam(V(2, 5.2), 2860, 640, 1.62, 1.6);
+      cam(S[2] + 1.3, 2866, 600, 1.42, V(2, 5.2) - S[2] - 1.3, "sine.inOut");
+      draw("h2", V(2, 6.4), 1.6);
+      tl.set("#cursor", { x: 3020, y: 860 }, V(2, 7.0));
+      tl.to("#cursor", { opacity: 1, duration: 0.2 }, V(2, 7.0));
+      cursorTo(V(2, 7.1), 3201, 731, 0.75);
+      click(V(2, 7.95));
+      tl.to("#cursor", { opacity: 0, duration: 0.2 }, V(2, 8.4));
+
+      // 4. The build: connectors bound with your sign-in.
+      cam(S[3], 4745, 470, 0.84, 1.3);
+      cam(V(3, 1.9), 4720, 300, 1.36, 1.8);
+      draw("h3", V(3, 3.6), 3.2);
+      cam(V(3, 3.7), 4700, 320, 1.46, S[4] - V(3, 3.7), "sine.inOut");
+
+      // 5. The checks.
+      tl.to("#shot04", { opacity: 1, duration: 0.5 }, S[4] + 0.1);
+      cam(S[4] + 0.2, 4660, 790, 1.48, 1.6);
+      draw("h4", V(4, 2.6), 3.0);
+
+      // 6. The preview with real data.
+      cam(S[5], 6745, 567, 0.85, 1.3);
+      cam(V(5, 1.4), 7190, 700, 1.15, 1.8);
+      draw("h5", V(5, 3.2), 2.2);
+
+      // 7. Connections.
+      cam(S[6], 6745, 567, 0.85, 1.0);
+      tl.to("#scrim", { opacity: 1, duration: 0.3 }, S[6] + 0.5);
+      tl.fromTo("#shot06", { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }, S[6] + 0.6);
+      cam(S[6] + 1.2, 6745, 560, 1.25, 1.4);
+      draw("h6", V(6, 1.6), 4.8);
+      cam(S[6] + 2.6, 6770, 540, 1.34, S[7] - S[6] - 2.6, "sine.inOut");
+
+      // 8. Publish.
+      tl.to(["#shot06", "#scrim"], { opacity: 0, duration: 0.35 }, S[7]);
+      cam(S[7], 7250, 260, 1.35, 1.1);
+      tl.set("#cursor", { x: 7250, y: 420 }, S[7] + 0.4);
+      tl.to("#cursor", { opacity: 1, duration: 0.2 }, S[7] + 0.4);
+      cursorTo(S[7] + 0.45, 7512, 76, 0.7);
+      click(V(7, 0.85));
+      tl.to("#shot07", { opacity: 1, duration: 0.3 }, V(7, 1.25));
+      tl.to("#cursor", { opacity: 0, duration: 0.2 }, V(7, 1.5));
+      draw("h7", V(7, 2.3), 3.4);
+      cam(V(7, 1.6), 7310, 220, 1.46, S[8] - V(7, 1.6), "sine.inOut");
+
+      // 9. A colleague consents.
+      cam(S[8], 8745, 520, 1.0, 1.3);
+      cam(V(8, 1.2), 8745, 720, 1.5, 1.6);
+      draw("h8", V(8, 2.7), 2.3);
+      tl.set("#cursor", { x: 8700, y: 1000 }, V(8, 4.4));
+      tl.to("#cursor", { opacity: 1, duration: 0.2 }, V(8, 4.4));
+      cursorTo(V(8, 4.45), 8886, 888, 0.6);
+      click(V(8, 5.15));
+      tl.to("#cursor", { opacity: 0, duration: 0.2 }, V(8, 5.6));
+
+      // 10. Pull back over the whole journey; the admin controls land one at a time.
+      cam(S[9], 4795, -924, 0.18, 2.2);
+      tl.fromTo("#kicker", { opacity: 0 }, { opacity: 0.85, duration: 0.4 }, V(9, 0.4));
+      const adm = [["#adm1", 1.9], ["#adm2", 3.2], ["#adm3", 5.5]];
+      adm.forEach(([id, at], k) => {
+        tl.fromTo(id, { opacity: 0, clipPath: "inset(0 0 100% 0)", y: 30 }, { opacity: 1, clipPath: "inset(0 0 0% 0)", y: 0, duration: 0.4, ease: "power3.out" }, V(9, at));
+        const next = adm[k + 1];
+        tl.set(id, { opacity: 0 }, next ? V(9, next[1]) : S[10]);
+      });
+      tl.set("#kicker", { opacity: 0 }, S[10]);
+
+      // 11. End line.
+      tl.to(stage, { opacity: 0, duration: 0.5 }, S[10]);
+      tl.fromTo("#end1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, S[10] + 0.3);
+      tl.fromTo("#end2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, S[10] + 1.1);
+      tl.fromTo("#endsub", { opacity: 0 }, { opacity: 0.85, duration: 0.5 }, S[10] + 2.2);
+      tl.set({}, {}, 85.6);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+[
+ {"id":"s01-hook","text":"It's ten to ten. The Orion go/no-go review starts at ten, and the context is scattered across email, chats and files."},
+ {"id":"s02-landing","text":"So instead of digging through your inbox, you open the Code tab in the Copilot app."},
+ {"id":"s03-prompt","text":"You describe the app once, in plain words: your calendar, a briefing for each meeting, and the rules it must follow."},
+ {"id":"s04-build","text":"Copilot plans the app, writes the code, and connects Outlook and Work IQ, using your own sign-in."},
+ {"id":"s05-checks","text":"Before you see anything, it checks its own work: typecheck, lint, and a pre-deploy gate."},
+ {"id":"s06-preview","text":"About fifteen minutes later, the preview opens on your real calendar. No sample data."},
+ {"id":"s07-connections","text":"Settings show exactly which connectors the app can use. The app itself never sees your password or a token."},
+ {"id":"s08-publish","text":"Select Publish, and the app runs on the Copilot Managed Runtime, with its own web address."},
+ {"id":"s09-consent","text":"Each colleague who opens it approves the connections with their own account, so everyone sees only their own data."},
+ {"id":"s10-admin","text":"And admins stay in charge: who pays for it, which connectors and actions it may use, and who it's shared with."},
+ {"id":"s11-close","text":"Now it's your turn. Open the lab, and build it yourself."}
+]

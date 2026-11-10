@@ -1,0 +1,15 @@
+[
+ {"id":"s01-intro","text":"Every app on the Copilot Managed Runtime follows rules that an admin sets. Let's tour the controls in the Apps settings of the Microsoft 365 admin center: connectors and their actions, sharing, and content security."},
+ {"id":"s02-settings","text":"In the admin center, open Apps, then Settings. Select Environment groups."},
+ {"id":"s03-groups","text":"An environment group applies the same rules to every app made by a set of people. Every tenant starts with the Default Environment Group, which covers everyone. Open it."},
+ {"id":"s04-rules","text":"The group has four rules: Routing, Connectors and MCP servers, Sharing, and Content security policy. The Managed by column shows who maintains each one. Rules managed by Microsoft are updated automatically. Here, the connectors rule has been customized, so it shows the organization's name."},
+ {"id":"s05-connectors","text":"Select Connectors and MCP servers. This is the allow list: the connectors and MCP servers that apps can use. Everything else is blocked. Look at the Allowed actions column. Some connectors allow all actions, others only some of them."},
+ {"id":"s06-outlook","text":"Let's check Office 365 Outlook. Search for it, select its check box, then select Edit actions."},
+ {"id":"s07-actions","text":"Every action has its own switch. Get emails, Send an email, Delete email: each one can be allowed or blocked. So allowing a connector doesn't mean allowing everything it can do. Always check the actions that send, change, or delete data. In the lab, select Cancel to leave without saving."},
+ {"id":"s08-catalog","text":"To allow another connector, select Add connectors. The catalog lists every connector available in your tenant. Search, select, and add. And remember: policy changes can take a while to reach running apps, so don't expect to see a block straight away."},
+ {"id":"s09-sharing","text":"Back on the group page, open Sharing. It decides who can open an app's shared link: anyone in the org, or only the people and groups it was shared with, and whether guests are allowed. To change it, select Edit this rule. From then on, Microsoft stops updating that rule for you."},
+ {"id":"s10-csp","text":"Content security policy controls which external sources an app can load or contact. The trusted defaults protect every app from the start. That's why an app that calls an external address directly can work on your PC, but be blocked once it's hosted."},
+ {"id":"s11-allapps","text":"Now go to Apps, then All apps. This is the inventory of every managed app in your organization, with its owner, status, location, and environment group."},
+ {"id":"s12-app","text":"Open an app and select the Connectors tab to see exactly what it uses. Daily Meeting Briefing uses Work IQ Copilot MCP and Office 365 Outlook. And if an app ever becomes a risk, Block stops it for everyone."},
+ {"id":"s13-close","text":"That's the tour. Now try it yourself, in steps seven B and seven C of the lab."}
+]

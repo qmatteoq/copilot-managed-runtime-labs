@@ -1,0 +1,14 @@
+[
+ {"id":"s01-intro","text":"Apps on the Copilot Managed Runtime use Copilot Credits every time they run. So before anyone opens your app, an admin decides who pays, and how much. Here's how to set up a spending policy, step by step."},
+ {"id":"s02-open","text":"Sign in to the Microsoft 365 admin center as a Global or Billing administrator. In the left menu, open Copilot, then Cost management."},
+ {"id":"s03-add","text":"Select the Configuration tab. Your existing spending policies are listed here. Select Add spending policy."},
+ {"id":"s04-scope","text":"Give the policy a name. For the scope, keep Identity and All users, so everyone in the tenant is covered. Then select Next."},
+ {"id":"s05-services","text":"In Agents and services, make sure Copilot Managed Runtime is checked. That's the service that runs your apps. Select Next."},
+ {"id":"s06-limit","text":"Now the budget. Choose Limit monthly spending, and enter at least the minimum shown for your tenant. Here, that's fifty thousand credits, about five hundred dollars a month."},
+ {"id":"s07-user","text":"Then cap each person. Choose Limit monthly spending per user, and enter at least the minimum, here two thousand credits. Leave alerts off for the lab, and select Next."},
+ {"id":"s08-model","text":"For the model template, keep Apply model selection automatically, and select Next."},
+ {"id":"s09-billing","text":"Credits are billed to your default Azure subscription. If you have prepaid credits, those are used first. Select Next."},
+ {"id":"s10-review","text":"Check the summary, then select Create spending policy."},
+ {"id":"s11-done","text":"The new policy is listed, and enabled right away. If someone is covered by more than one policy, the one with the highest limit applies."},
+ {"id":"s12-close","text":"That's it. Now create your own, in step seven A of the lab."}
+]
